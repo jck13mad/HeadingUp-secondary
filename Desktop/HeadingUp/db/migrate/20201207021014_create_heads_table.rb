@@ -1,6 +1,6 @@
 class CreateHeadsTable < ActiveRecord::Migration[6.0]
   def change
-    craete_table :heads do |t|
+    create_table :heads do |t|
       t.string :name
       t.integer :price
       t.string :brand
