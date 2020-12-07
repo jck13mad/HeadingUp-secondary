@@ -36,7 +36,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :'layout'
+    erb :'home'
   end
 
 end
