@@ -23,6 +23,11 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  def empty_fields?(hash)
+    hash.values.any? {|x| x.nil? || x.empty?}
+  end
+
+  
 
   get '/' do
      erb :'home'
