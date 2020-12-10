@@ -27,7 +27,11 @@ class ApplicationController < Sinatra::Base
     hash.values.any? {|x| x.nil? || x.empty?}
   end
 
-  
+  def redirect_if_logged_in(session)
+    if logged_in?(session)
+      redirect '/heads'
+    end
+  end
 
   get '/' do
      erb :'home'
