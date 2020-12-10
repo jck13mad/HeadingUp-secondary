@@ -9,6 +9,9 @@ class ApplicationController < Sinatra::Base
     set :session_secret, 'secret'
   end
 
+  def current_user(session)
+    User.find(session_hash[:user_id])
+  end
   
 
 
