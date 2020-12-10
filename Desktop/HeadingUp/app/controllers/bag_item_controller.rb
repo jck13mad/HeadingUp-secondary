@@ -7,7 +7,15 @@ class BagItemController < ApplicationController
     erb :'bag_items/bag_items'
   end
 
-  
+  post '/add' do
+    b = BagItem.new(params[:bag])
+
+    if session[:user_id] == params[:bag][:user_id].to_i && b.save
+      redirect '/bag'
+    else
+      redirect '/heads'
+    end
+  end
 
 
 
