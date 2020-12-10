@@ -17,6 +17,12 @@ class ApplicationController < Sinatra::Base
     !!session[:user_id]
   end
 
+  def redirect_if_logged_out(session)
+    if !logged_in?(session)
+      redirect '/heads'
+    end
+  end
+
 
   get '/' do
      erb :'home'
