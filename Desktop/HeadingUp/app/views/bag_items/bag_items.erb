@@ -1,5 +1,61 @@
-<div class="bag_table">
+<div class="bag_page">
+
   <header id="title">
     <h1> <%= @user.name %>'s Cart</h1>
   </header>
+
+  <div class="bag_table">
+    <table id="bag">
+      <thead>
+        <tr>
+          <th class="qty">Quantity</th>
+          <th class="img"> </th>
+          <th class="item_name">Item</th>
+          <th class="price">Price</th>
+          <th class="delete">&nbsp;</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <div class="bag_items">
+          <% @bag_heads.each do |b| %>
+            <% h = Head.find(b.head_id) %>
+            <td>
+              <form action="/bag/edit_quantity" method="post">
+                <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
+                <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
+                <input type="hidden" name="bag[quantity]" value="<%= h.quantity - 1 %>">
+                <input id="decrease" class="bag_edit__btn" type="submit" name="submit" value=" - ">
+              </form>
+            
+              <%= h.quantity %></td>
+
+              <form action="/bag/edit_quantity" method="post">
+                <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
+                <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
+                <input type="hidden" name="bag[quantity]" value="<%= h.quantity + 1 %>">
+                <input id="increase" type="submit" class="bag_edit__btn" name="submit" value=" + ">
+              </form>
+            </td>
+
+            <td><img src="/img/<%= h.img %>"></td>
+
+            <td><%= h.name %></td>
+
+            <td><%= h.price %></td>
+
+            <td>
+              <form id="delete" action="/delete" method="post">
+                <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
+                <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
+                <input type="hidden" name="bag[quantity]" value="<%= h.quantity - c.quantity %>">
+                <input id="decrease" type="submit" class="bag_edit_btn" name="submit" value=" x ">
+              </form>
+            </td>
+
+          <% end %>
+        </div>
+      </tbody>
+    </table>
+  </div>
 </div>
