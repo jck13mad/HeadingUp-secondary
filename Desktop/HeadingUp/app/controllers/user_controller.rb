@@ -15,10 +15,10 @@ class UserController < ApplicationController
       env['x-rack.flash'][:notice] = "All fields must be filled."
       redirect '/signup'
     else
-      user = User.new(params[:user])
+      u = User.new(params[:user])
 
-      if user.save 
-        session[:user_id] = user.id
+      if u.save 
+        session[:user_id] = u.id
         redirect '/heads'
       else
         env['x-rack.flash'][:notice] = "Uh-oh, that didn't go to plan. Please try again!"
