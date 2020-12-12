@@ -41,5 +41,17 @@
       </form>
     </div>
 
+    <header>
+      <div class="login_options">
+        <% if !logged_in?(session) %>
+          <a href="/signup">Sign Up</a> / <a href="/login">Login</a>
+        <% else %>
+          <a href="/bag">Bag</a> / <a href="/logout">Logout</a>
+        <% end %>
+      </div>
+    </header>
+    
+    <%= yield %>
+    
   </body>
 </html>
