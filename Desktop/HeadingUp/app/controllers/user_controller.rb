@@ -30,4 +30,24 @@ class UserController < ApplicationController
     redirect_if_logged_in(session)
     erb :'user/login'
   end
+
+  post '/login' do
+    if empty_fields?(params[:user_id])
+      flash[:message] = "All fields must be filled."
+      redirect '/login'
+    else
+      u = User.find_by(email: params[:user][:email])
+
+      if u && u.authenticate(params[:user][:password])
+        session[:user_id] = u.id
+        redirect '/all_heads'
+      else
+        flash[:message] = "Incorrect Email or Password. Try Again."
+        redirect '/login'
+      end
+    end
+
+  end
+
+  
 end
