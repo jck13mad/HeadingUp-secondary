@@ -12,6 +12,12 @@
       font-family: 'Work Sans', sans-serif;
     }
 
+    /* .welcome {
+      margin-top: 50%; 
+      margin-left: 50%;
+      margin-right: -50%;
+    } */
+
     .login_options {
       float: right;
       padding-right: 25px;
@@ -155,6 +161,13 @@
 </head>
 
 <body>
+<% flash.keys.each do |type| %>
+  <div data-alert class="flash <%= type %> alert-box radius">
+    <%= flash[type] %>
+    <a href="#" class="close">&times;</a>
+  </div>
+<% end %>
+
 <div class="sidebar-left">
   <div class="logo_img">
     <a href="/heads"><img src="/img/headinguplogo.png" alt="Heaading Up Logo"></a>

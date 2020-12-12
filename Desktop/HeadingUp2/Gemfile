@@ -20,4 +20,4 @@ gem "nokogiri", "~> 1.10"
 
 gem "rack-flash3", "~> 1.0"
 
-gem "bcrypt", "~> 3.1"
+gem 'bcrypt', '~> 3.1.7'

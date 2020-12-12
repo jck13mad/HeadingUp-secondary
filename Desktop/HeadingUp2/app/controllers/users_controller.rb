@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     # fields cannot be empty
     elsif empty_fields?(params[:user])
       flash[:message] = "Please fill out the form."
+      # flash.now[:notice] = "Thanks for signing up!"
       redirect '/signup'
     else
       user = User.new(params[:user])

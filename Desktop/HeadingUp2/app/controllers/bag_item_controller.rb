@@ -1,5 +1,4 @@
 class BagItemController < ApplicationController
-
   get '/bag' do
     redirect_if_logged_out(session)
     @user = User.find(session[:user_id])

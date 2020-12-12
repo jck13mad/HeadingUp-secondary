@@ -35,7 +35,12 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  post '/error' do
+    flash[:notice] = "Come on dude"
+  end
+
   get '/' do
+    flash[:notice] = "Hooray, Flash is working!"
     erb :'home'
   end
 
