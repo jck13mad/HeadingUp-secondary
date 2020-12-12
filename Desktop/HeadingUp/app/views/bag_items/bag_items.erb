@@ -20,39 +20,40 @@
         <div class="bag_items">
           <% @bag_heads.each do |b| %>
             <% h = Head.find(b.head_id) %>
-            <td>
-              <form action="/bag/edit_quantity" method="post">
-                <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
-                <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
-                <input type="hidden" name="bag[quantity]" value="<%= h.quantity - 1 %>">
-                <input id="decrease" class="bag_edit_btn" type="submit" name="submit" value=" - ">
-              </form>
+            <tr>
+              <td>
+                <form action="/bag/edit_quantity" method="post">
+                  <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
+                  <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
+                  <input type="hidden" name="bag[quantity]" value="<%= h.quantity - 1 %>">
+                  <input id="decrease" class="bag_edit_btn" type="submit" name="submit" value=" - ">
+                </form>
             
-              <%= h.quantity %></td>
+                <%= h.quantity %></td>
 
-              <form action="/bag/edit_quantity" method="post">
-                <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
-                <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
-                <input type="hidden" name="bag[quantity]" value="<%= h.quantity + 1 %>">
-                <input id="increase" type="submit" class="bag_edit_btn" name="submit" value=" + ">
-              </form>
-            </td>
+                <form action="/bag/edit_quantity" method="post">
+                  <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
+                  <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
+                  <input type="hidden" name="bag[quantity]" value="<%= h.quantity + 1 %>">
+                  <input id="increase" type="submit" class="bag_edit_btn" name="submit" value=" + ">
+                </form>
+              </td>
 
-            <td><img src="/img/<%= h.img %>"></td>
+              <td><img src="/img/<%= h.img %>"></td>
 
-            <td><%= h.name %></td>
+              <td><%= h.name %></td>
 
-            <td><%= h.price %></td>
+              <td><%= h.price %></td>
 
-            <td>
-              <form id="delete" action="/delete" method="post">
-                <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
-                <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
-                <input type="hidden" name="bag[quantity]" value="<%= h.quantity - h.quantity %>">
-                <input id="decrease" type="submit" class="bag_edit_btn" name="submit" value=" x ">
-              </form>
-            </td>
-
+              <td>
+                <form id="delete" action="/delete" method="post">
+                  <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
+                  <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
+                  <input type="hidden" name="bag[quantity]" value="<%= h.quantity - h.quantity %>">
+                  <input id="decrease" type="submit" class="bag_edit_btn" name="submit" value=" x ">
+                </form>
+              </td>
+            </tr>
           <% end %>
         </div>
       </tbody>
