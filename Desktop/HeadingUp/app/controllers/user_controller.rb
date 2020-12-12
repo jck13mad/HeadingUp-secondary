@@ -19,7 +19,7 @@ class UserController < ApplicationController
 
       if u.save 
         session[:user_id] = u.id
-        redirect '/all_heads'
+        redirect '/heads'
       else
         flash[:message] = "Uh-oh, that didn't go to plan. Please try again!"
       end
@@ -40,7 +40,7 @@ class UserController < ApplicationController
 
       if u && u.authenticate(params[:user][:password])
         session[:user_id] = u.id
-        redirect '/all_heads'
+        redirect '/heads'
       else
         flash[:message] = "Incorrect Email or Password. Try Again."
         redirect '/login'
@@ -52,6 +52,6 @@ class UserController < ApplicationController
   get '/logout' do
     redirect_if_logged_out(session)
     session.clear
-    redirect '/all_heads'
+    redirect '/heads'
   end
 end
