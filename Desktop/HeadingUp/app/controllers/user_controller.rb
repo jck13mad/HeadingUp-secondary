@@ -49,5 +49,9 @@ class UserController < ApplicationController
 
   end
 
-  
+  get '/logout' do
+    redirect_if_logged_out(session)
+    session.clear
+    redirect '/all_heads'
+  end
 end
