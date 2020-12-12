@@ -25,7 +25,7 @@
                 <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
                 <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
                 <input type="hidden" name="bag[quantity]" value="<%= h.quantity - 1 %>">
-                <input id="decrease" class="bag_edit__btn" type="submit" name="submit" value=" - ">
+                <input id="decrease" class="bag_edit_btn" type="submit" name="submit" value=" - ">
               </form>
             
               <%= h.quantity %></td>
@@ -34,7 +34,7 @@
                 <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
                 <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
                 <input type="hidden" name="bag[quantity]" value="<%= h.quantity + 1 %>">
-                <input id="increase" type="submit" class="bag_edit__btn" name="submit" value=" + ">
+                <input id="increase" type="submit" class="bag_edit_btn" name="submit" value=" + ">
               </form>
             </td>
 
@@ -48,7 +48,7 @@
               <form id="delete" action="/delete" method="post">
                 <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
                 <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
-                <input type="hidden" name="bag[quantity]" value="<%= h.quantity - c.quantity %>">
+                <input type="hidden" name="bag[quantity]" value="<%= h.quantity - h.quantity %>">
                 <input id="decrease" type="submit" class="bag_edit_btn" name="submit" value=" x ">
               </form>
             </td>
