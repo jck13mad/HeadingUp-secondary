@@ -9,10 +9,10 @@ class UserController < ApplicationController
     user = User.where(email: params[:user][:email])
 
     if !user.empty?
-      flash[:message] = "Email not available, please use a different email."
+      env['x-rack.flash'][:notice] = "Email not available, please use a different email."
       redirect '/signup'
     elsif empty_fields?(params[:user])
-      flash[:message] = "All fields must be filled."
+      env['x-rack.flash'][:notice] = "All fields must be filled."
       redirect '/signup'
     else
       u = User.new(params[:user])
@@ -21,7 +21,7 @@ class UserController < ApplicationController
         session[:user_id] = u.id
         redirect '/heads'
       else
-        flash[:message] = "Uh-oh, that didn't go to plan. Please try again!"
+        env['x-rack.flash'][:notice] = "Uh-oh, that didn't go to plan. Please try again!"
       end
     end
   end
@@ -33,7 +33,7 @@ class UserController < ApplicationController
 
   post '/login' do
     if empty_fields?(params[:user_id])
-      flash[:message] = "All fields must be filled."
+      env['x-rack.flash'][:notice] = "All fields must be filled."
       redirect '/login'
     else
       u = User.find_by(email: params[:user][:email])
@@ -42,7 +42,7 @@ class UserController < ApplicationController
         session[:user_id] = u.id
         redirect '/heads'
       else
-        flash[:message] = "Incorrect Email or Password. Try Again."
+        env['x-rack.flash'][:notice] = "Incorrect Email or Password. Try Again."
         redirect '/login'
       end
     end

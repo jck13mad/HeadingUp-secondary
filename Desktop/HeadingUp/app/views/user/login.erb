@@ -1,7 +1,7 @@
 <div class="login">
 
-  <% if flash.has(:message) %>
-    <div class="flash_message"><%= flash[:message] %></div>
+  <% if flash.has(:notice) %>
+    <div class="flash_message"><%= flash[:notice] %></div>
   <% end %>
 
   <form action="login" method="post">
