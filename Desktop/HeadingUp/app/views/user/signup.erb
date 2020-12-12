@@ -1,5 +1,9 @@
 <div class="signup">
 
+  <% if flash.has?(:notice) %>
+    <div class="flash_message"><%= flash[:notice] %>
+  <% end %>
+
   <form action="signup" method="post">
     <h2>Create New Account</h2>
     <h3>Personal Info</h3>
@@ -22,6 +26,8 @@
       <label for="user[password]">Password: </label>
       <input type="password" name="user[email]">
     </p>
+
+    <input type="submit" name="signup" value="Submit">
   </form>
 
 </div>
