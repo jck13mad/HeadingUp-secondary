@@ -21,6 +21,13 @@ class UserController < ApplicationController
         session[:user_id] = u.id
         redirect '/all_heads'
       else
-        flash[:message] = "Uh-oh, that didn't go to plan. "
+        flash[:message] = "Uh-oh, that didn't go to plan. Please try again!"
+      end
+    end
+  end
+
+  get '/login' do
+    redirect_if_logged_in(session)
+    erb :'user/login'
   end
 end
