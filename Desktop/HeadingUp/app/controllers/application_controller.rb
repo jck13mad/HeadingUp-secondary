@@ -1,6 +1,7 @@
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
-
+  use Rack::Flash 
   # set :views, -> { File.join(root, '../views')}
 
   configure do
