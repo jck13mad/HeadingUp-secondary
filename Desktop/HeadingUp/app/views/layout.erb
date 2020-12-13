@@ -7,13 +7,13 @@
     <style>
       .login_options {
         float: right;
-        padding_right: 25px;
+        padding-right: 25px;
       }
 
       .item_grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        grid-gap: 50;
+        grid-gap: 50px;
         grid-auto-rows: 1fr;
         padding-top: 60px;
         padding-bottom: 85px;
@@ -24,9 +24,62 @@
       .sidebar-left {
         float: left;
         width: 258px;
-        height: 800px;
+        height: 2000px;
         position: fixed;
         background-color: #b6ccd7;
+      }
+
+      .sidebar-left form {
+        position: fixed;
+      }
+
+      .logo_img {
+        display: block;
+        width: 50%;
+      }
+
+      .filter-options_title {
+        list-style: none;
+        margin-bottom: 5px;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
+      a:hover {
+        color: gold;
+      }
+
+      .item_grid_container {
+        padding: 10px 30px 30px 20px;
+        box-shadow: 5px 5px 10px #675f5f;
+        background-color: white;
+        display: grid;
+      }
+
+      .grid_content {
+        max-width: 55%;
+        margin: auto;
+      }
+
+      .item_grid_img {
+        height: 250px;
+        width: 225px;
+        justify-self: center;
+      }
+
+      .footer {
+        width: 40%;
+        text-align: left;
+        background-color: #b6ccd7;
+        padding: 20px;
+        color: black; 
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        height: 10px;
       }
     </style>
   </head>
@@ -38,12 +91,12 @@
 
       <form>
         <div class="filter_options">
-          <div data-role="title">
+          <div data-role="title" class="filter-options_title">
             <a href="/heads/men" style="text-decoration: none;">Men</a>
           </div>
           <ul>
             <li><a href="/heads/men/nike">Nike</a></li>
-            <li><a href="/heads/men/underarmour">Under Armour</a></li>
+          <li><a href="/heads/men/underarmour">Under Armour</a></li>
             <li><a href="/heads/men/brine">Brine</a></li>
             <li><a href="/heads/men/stx">STX</a></li>
             <li><a href="/heads/men/maverik">Maverik</a></li>
@@ -79,7 +132,7 @@
     <%= yield %>
 
     <footer class="footer" id="footer">
-      No pictures, descriptions, or items are my own and come from <a href="lacrossemonkey.com">lacrossemonkey.com</a>.
+      No pictures, descriptions, or items are my own and come from <a href="https://www.lacrossemonkey.com/">lacrossemonkey.com</a>.
     </footer>
   </body>
 </html>
