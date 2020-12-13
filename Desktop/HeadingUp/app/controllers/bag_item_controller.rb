@@ -2,7 +2,7 @@ class BagItemController < ApplicationController
 
   get '/bag' do
     redirect_if_logged_out(session)
-    @user = User.find(session[:user.id])
+    @user = User.find(session[:user_id])
     @bag_items = BagItem.where(user_id: @user.id)
     erb :'bag_items/bag_items'
   end
