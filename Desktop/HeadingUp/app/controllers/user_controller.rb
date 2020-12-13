@@ -17,6 +17,8 @@ class UserController < ApplicationController
     else
       u = User.new(params[:user])
 
+      puts params[:user]
+
       if u.save 
         session[:user_id] = u.id
         redirect '/heads'
