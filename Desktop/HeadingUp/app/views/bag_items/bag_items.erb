@@ -21,27 +21,30 @@
           <% @bag_items.each do |b| %>
             <% h = Head.find(b.head_id) %>
             <tr>
-              <form action="/bag/edit" method="post">
-                <input type="hidden" name="bag_items[user_id]" value="<%= b.user_id %>">
-                <input type="hidden" name="bag_items[head_id]" value="<%= b.head_id %>">
-                <input type="hidden" name="bag_items[quantity]" value="<%= b.quantity - 1 %>">
-                <input id="decrease" class="bag_edit_btn" type="submit" name="submit" value=" - ">
-              </form>
 
-              <td> <%= b.quantity %> </td>
+              <td> 
+                <form action="/bag/edit" method="post">
+                  <input type="hidden" name="bag[user_id]" value="<%= b.user_id %>">
+                  <input type="hidden" name="bag[head_id]" value="<%= b.head_id %>">
+                  <input type="hidden" name="bag[quantity]" value="<%= b.quantity + 1 %>">
+                  <input id="increase" type="submit" class="bag_edit_btn" name="submit" value=" + ">
+                </form>
 
-              <form action="/bag/edit" method="post">
-                <input type="hidden" name="bag_items[user_id]" value="<%= b.user_id %>">
-                <input type="hidden" name="bag_items[head_id]" value="<%= b.head_id %>">
-                <input type="hidden" name="bag_items[quantity]" value="<%= b.quantity + 1 %>">
-                <input id="increase" type="submit" class="bag_edit_btn" name="submit" value=" + ">
-              </form>
+                <%= b.quantity %>
 
-              <td><img src="/img/<%= h.img %>"></td>
+                <form action="/bag/edit" method="post">
+                  <input type="hidden" name="bag[user_id]" value="<%= b.user_id %>">
+                  <input type="hidden" name="bag[head_id]" value="<%= b.head_id %>">
+                  <input type="hidden" name="bag[quantity]" value="<%= b.quantity - 1 %>">
+                  <input id="decrease" class="bag_edit_btn" type="submit" name="submit" value=" - ">
+                </form>                
+              </td>
+
+              <td class="img"><img src="/img/<%= h.img %>"></td>
 
               <td><%= h.name %></td>
 
-              <td><%= h.price %></td>
+              <td>$<%= h.price %>.99</td>
 
               <td>
                 <form id="delete" action="/delete" method="post">
@@ -53,8 +56,18 @@
               </td>
             </tr>
           <% end %>
+          
         </div>
       </tbody>
     </table>
+    <hr>
+    <div class="total">
+      <% total = 0 %>
+      <% @bag_items.each do |b| %>
+        <% h = Head.find(b.head_id) %>
+        <% total = total + (h.price * b.quantity) %>
+      <% end %>
+      <h2>Total: $<%= total %></h2>
+    </div>
   </div>
 </div>
