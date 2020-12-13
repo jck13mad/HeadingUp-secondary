@@ -22,7 +22,7 @@
             <% h = Head.find(b.head_id) %>
             <tr>
               <td>
-                <form action="/bag/edit_quantity" method="post">
+                <form action="/bag/edit" method="post">
                   <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
                   <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
                   <input type="hidden" name="bag[quantity]" value="<%= h.quantity - 1 %>">
@@ -31,7 +31,7 @@
             
                 <%= h.quantity %></td>
 
-                <form action="/bag/edit_quantity" method="post">
+                <form action="/bag/edit" method="post">
                   <input type="hidden" name="bag[user_id]" value="<%= h.user_id %>">
                   <input type="hidden" name="bag[head_id]" value="<%= h.head_id %>">
                   <input type="hidden" name="bag[quantity]" value="<%= h.quantity + 1 %>">
