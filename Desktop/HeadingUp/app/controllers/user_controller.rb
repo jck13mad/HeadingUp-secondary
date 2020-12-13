@@ -17,8 +17,6 @@ class UserController < ApplicationController
     else
       u = User.new(params[:user])
 
-      puts params[:user]
-
       if u.save 
         session[:user_id] = u.id
         redirect '/heads'
@@ -35,7 +33,7 @@ class UserController < ApplicationController
   end
 
   post '/login' do
-    if empty_fields?(params[:user_id])
+    if empty_fields?(params[:user])
       env['x-rack.flash'][:notice] = "All fields must be filled."
       redirect '/login'
     else
