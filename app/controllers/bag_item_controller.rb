@@ -24,9 +24,9 @@ class BagItemController < ApplicationController
     redirect '/bag'
   end
 
-  post '/delete' do
-    bag_item = BagItem.find_by(user_id: params[:bag][:user_id], head_id: params[:bag][:head_id])
-    bag_item.delete
+  delete '/delete/:head_id' do
+    @bag_item = BagItem.find_by(params[:head_id])
+    @bag_item.delete
 
     redirect '/bag'
   end

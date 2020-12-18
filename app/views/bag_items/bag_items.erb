@@ -47,11 +47,9 @@
               <td>$<%= h.price %>.99</td>
 
               <td>
-                <form id="delete" action="/delete" method="post">
-                  <input type="hidden" name="bag[user_id]" value="<%= b.user_id %>">
-                  <input type="hidden" name="bag[head_id]" value="<%= b.head_id %>">
-                  <input type="hidden" name="bag[quantity]" value="<%= b.quantity - b.quantity %>">
-                  <input id="decrease" type="submit" class="bag_edit_btn" name="submit" value=" x ">
+                <form method="post" action="/delete/<%= b.head_id %>">
+                  <input type="hidden" name="_method" value="delete">
+                  <input type="submit" class="bag_edit_btn" value=" X ">
                 </form>
               </td>
             </tr>
