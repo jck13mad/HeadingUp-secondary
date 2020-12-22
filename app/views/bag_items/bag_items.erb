@@ -40,11 +40,13 @@
                 </form>                
               </td>
 
-              <td class="img"><img src="/img/<%= h.img %>"></td>
+              <td class="img">
+                <a href="bag/<%= b.head_id %>"><img src="/img/<%= h.img %>"></a>
+              </td>
 
               <td><%= h.name %></td>
 
-              <td>$<%= h.price %>.99</td>
+              <td>$<%= h.price %></td>
 
               <td>
                 <form method="post" action="/delete/<%= b.head_id %>">

@@ -4,7 +4,7 @@
       <img class="item_grid_img" src="/img/<%= h.img %>" alt="<%= h.brand %> - <% h.name %>">
       <div class="grid_content">
         <p><%= h.brand %> <%= h.name %></p>
-        <p><b>$<%= h.price %>.99</b></p>
+        <p><b>$<%= h.price %></b></p>
 
         <% if !User.where(id: session[:user_id]).empty? %>
           <form action="/add" method="post">

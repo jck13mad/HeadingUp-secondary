@@ -7,6 +7,12 @@ class BagItemController < ApplicationController
     erb :'bag_items/bag_items'
   end
 
+  get '/bag/:head_id' do
+      @bag_item = BagItem.find_by(params[:head_id])
+      puts @bag_item.id
+      erb :'bag_items/item' 
+  end
+
   post '/add' do
     b = BagItem.new(params[:bag])
 
