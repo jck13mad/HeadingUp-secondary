@@ -25,19 +25,21 @@ class BagItemController < ApplicationController
   get '/bag/:head_id/edit' do
     @bag_item = BagItem.find_by(params[:head_id])
 
+     @bag_item.update(quantity: params[:quantity])
+
     erb :'bag_items/edit'
   end
 
   put '/bag/:head_id' do 
     @bag_item = BagItem.find_by(head_id: params[:head_id])
-    puts @bag_item
+    
 
     # if empty_fields?(params[:quantity].to_i)
     #   env['x-rack.flash'][:notice] = "Please specify how many!"
 
     #   redirect '/bag/:head_id/edit'
     # else
-      @bag_item.update(quantity: params[:quantity])
+      #@bag_item.update(quantity: params[:quantity])
     # end
     redirect '/bag'
   end
