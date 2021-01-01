@@ -23,21 +23,8 @@
             <tr>
 
               <td> 
-                <form action="/bag/edit" method="post">
-                  <input type="hidden" name="bag[user_id]" value="<%= b.user_id %>">
-                  <input type="hidden" name="bag[head_id]" value="<%= b.head_id %>">
-                  <input type="hidden" name="bag[quantity]" value="<%= b.quantity + 1 %>">
-                  <input id="increase" type="submit" class="bag_edit_btn" name="submit" value=" + ">
-                </form>
-
                 <%= b.quantity %>
-
-                <form action="/bag/edit" method="post">
-                  <input type="hidden" name="bag[user_id]" value="<%= b.user_id %>">
-                  <input type="hidden" name="bag[head_id]" value="<%= b.head_id %>">
-                  <input type="hidden" name="bag[quantity]" value="<%= b.quantity - 1 %>">
-                  <input id="decrease" class="bag_edit_btn" type="submit" name="submit" value=" - ">
-                </form>                
+                <button class="bag_edit_btn"><a href="bag/<%= b.head_id %>/edit">Edit Quantity</a></button> 
               </td>
 
               <td class="img">
