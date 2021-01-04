@@ -23,6 +23,9 @@
   <li>Clone the repository</li>
   <li>Run rake db:migrate</li>
   <li>Run rake db:seed</li>
+  <li>Install RVM via <a href="https://rvm.io/rvm/security">this link</a></li>
+  <li>Run "rvm install 2.5.0"</li>
+  <li>Run "rvm use ruby 2.5.0"</li>
   <li>Launch by running shotgun</li>
  </ol>
  
