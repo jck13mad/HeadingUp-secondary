@@ -1,8 +1,8 @@
 class HeadsController < ApplicationController
-
+  
   get '/heads' do
     @name = "All Heads"
-    @heads = Head.all 
+    @heads = Head.all
     erb :'heads/all_heads'
     # "hello world"
   end

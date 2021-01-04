@@ -19,24 +19,23 @@
       <tbody>
         <div class="bag_items">
           <% @bag_items.each do |b| %>
-            <% h = Head.find(b.head_id) %>
             <tr>
 
               <td> 
                 <%= b.quantity %>
-                <button class="bag_edit_btn"><a href="bag/<%= b.head_id %>/edit">Edit Quantity</a></button> 
+                <button class="bag_edit_btn"><a href="bag/<%= b.id %>/edit">Edit Quantity</a></button> 
               </td>
 
               <td class="img">
-                <a href="bag/<%= b.head_id %>"><img src="/img/<%= h.img %>"></a>
+                <a href="bag/<%= b.id %>"><img src="/img/<%= b.img %>"></a>
               </td>
 
-              <td><%= h.name %></td>
+              <td><%= b.name %></td>
 
-              <td>$<%= h.price %></td>
+              <td>$<%= b.price %></td>
 
               <td>
-                <form method="post" action="/delete/<%= b.head_id %>">
+                <form method="post" action="/delete/<%= b.id %>">
                   <input type="hidden" name="_method" value="delete">
                   <input type="submit" class="bag_edit_btn" value=" X ">
                 </form>
@@ -51,8 +50,7 @@
     <div class="total">
       <% total = 0 %>
       <% @bag_items.each do |b| %>
-        <% h = Head.find(b.head_id) %>
-        <% total = total + (h.price * b.quantity) %>
+        <% total = total + (b.price * b.quantity) %>
       <% end %>
       <h2>Total: $<%= total %></h2>
     </div>

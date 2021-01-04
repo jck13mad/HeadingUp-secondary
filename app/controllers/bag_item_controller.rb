@@ -3,50 +3,49 @@ class BagItemController < ApplicationController
   get '/bag' do
     redirect_if_logged_out(session)
     @user = User.find(session[:user_id])
-    @bag_items = BagItem.where(user_id: @user.id)
+    @bag_items = @user.bag_item.heads
     erb :'bag_items/bag_items'
   end
 
-  get '/bag/:head_id' do
-      @bag_item = BagItem.find_by(params[:head_id])
+  get '/bag/:id' do
+      @bag_item = Head.find_by_id(params[:id])
       erb :'bag_items/item' 
   end
 
   post '/add' do
-    b = BagItem.new(params[:bag])
-
-    if session[:user_id] == params[:bag][:user_id].to_i && b.save
+    @user = User.find(session[:user_id])
+    @head = Head.new(bag_item_id: @user.bag_item.id, img: params[:head][:img], description: params[:head][:description], price: params[:head][:price], brand: params[:head][:brand], name: params[:head][:name], quantity: params[:head][:quantity])
+  
+    if session[:user_id] == params[:bag][:user_id].to_i && @head.save
       redirect '/bag'
     else
       redirect '/heads'
     end
   end
 
-  get '/bag/:head_id/edit' do
-    @bag_item = BagItem.find_by(params[:head_id])
-
-     @bag_item.update(quantity: params[:quantity])
+  get '/bag/:id/edit' do
+    @bag_item = Head.find_by_id(params[:id])
 
     erb :'bag_items/edit'
   end
 
-  put '/bag/:head_id' do 
-    @bag_item = BagItem.find_by(head_id: params[:head_id])
+  put '/bag/:id' do 
+    @bag_item = Head.find_by_id(params[:id])
     
 
     # if empty_fields?(params[:quantity].to_i)
     #   env['x-rack.flash'][:notice] = "Please specify how many!"
 
-    #   redirect '/bag/:head_id/edit'
+    #   redirect '/bag/:bag_item_id/edit'
     # else
-      #@bag_item.update(quantity: params[:quantity])
+      @bag_item.update(quantity: params[:head][:quantity])
     # end
     redirect '/bag'
   end
 
-  delete '/delete/:head_id' do
-    @bag_item = BagItem.find_by(params[:head_id])
-    @bag_item.destroy
+  delete '/delete/:id' do
+    @head = Head.find_by_id(params[:id])
+    @head.delete
 
     redirect '/bag'
   end

@@ -34,6 +34,11 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  not_found do
+    status 404
+    erb :'home'
+  end
+
   get '/' do
      erb :'home'
   end

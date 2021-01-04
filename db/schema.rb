@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_172008) do
+ActiveRecord::Schema.define(version: 2021_01_03_154509) do
 
   create_table "bag_items", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "quantity"
     t.datetime "updated_at"
   end
 
@@ -27,13 +26,13 @@ ActiveRecord::Schema.define(version: 2021_01_01_172008) do
     t.string "description"
     t.datetime "updated_at"
     t.integer "bag_item_id"
+    t.integer "quantity"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.integer "bag_id"
   end
 
 end
