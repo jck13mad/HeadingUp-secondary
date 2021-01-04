@@ -14,7 +14,11 @@ class BagItemController < ApplicationController
 
   post '/add' do
     @user = User.find(session[:user_id])
-    @head = Head.new(bag_item_id: @user.bag_item.id, img: params[:head][:img], description: params[:head][:description], price: params[:head][:price], brand: params[:head][:brand], name: params[:head][:name], quantity: params[:head][:quantity])
+    if @user.bag_item == nil 
+      @bag_item = BagItem.new(user_id: @user.id, id: @user.id)
+      @bag_item.save
+    end
+      @head = Head.new(bag_item_id: @user.id, img: params[:head][:img], description: params[:head][:description], price: params[:head][:price], brand: params[:head][:brand], name: params[:head][:name], quantity: params[:head][:quantity])
   
     if session[:user_id] == params[:bag][:user_id].to_i && @head.save
       redirect '/bag'

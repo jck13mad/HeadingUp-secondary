@@ -50,7 +50,7 @@
     <div class="total">
       <% total = 0 %>
       <% @bag_items.each do |b| %>
-        <% total = total + (b.price * b.quantity) %>
+        <% total = total + (b.price * b.quantity.to_i) %>
       <% end %>
       <h2>Total: $<%= total %></h2>
     </div>
